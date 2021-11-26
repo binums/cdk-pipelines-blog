@@ -4,7 +4,7 @@ import * as cdk from "@aws-cdk/core";
 import * as lambda from "@aws-cdk/aws-lambda";
 import * as apigw from "@aws-cdk/aws-apigateway";
 
-export class BlogResourcesStack extends cdk.Stack {
+export class CdkPipelinesBlogStack extends cdk.Stack {
 	constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
 		super(scope, id, props);
 
