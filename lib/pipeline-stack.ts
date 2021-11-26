@@ -13,7 +13,9 @@ export class MyPipelineStack extends cdk.Stack {
 		super(scope, id, props);
 
 		const pipeline = new CodePipeline(this, "BlogPipeline", {
-			pipelineName: "BlogPipeline",
+			//***********Change the name of the pipeline***********
+			pipelineName: "BlogPipelineChanged",
+
 			synth: new CodeBuildStep("SynthStep", {
 				input: CodePipelineSource.connection(
 					"binums/cdk-pipelines-blog",

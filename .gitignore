@@ -1,5 +1,9 @@
 *.js
 !jest.config.js
+
+#To prevent functions in our lambda directory from being ignored 
+!**/lambda/*.js
+
 *.d.ts
 node_modules
 

@@ -1,15 +1,21 @@
-import * as cdk from '@aws-cdk/core';
-// import * as sqs from '@aws-cdk/aws-sqs';
+import * as cdk from "@aws-cdk/core";
 
-export class CdkPipelinesBlogStack extends cdk.Stack {
-  constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
-    super(scope, id, props);
+//Import the lambda and apigateway constructs
+import * as lambda from "@aws-cdk/aws-lambda";
+import * as apigw from "@aws-cdk/aws-apigateway";
 
-    // The code that defines your stack goes here
+export class BlogResourcesStack extends cdk.Stack {
+	constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
+		super(scope, id, props);
 
-    // example resource
-    // const queue = new sqs.Queue(this, 'CdkPipelinesBlogQueue', {
-    //   visibilityTimeout: cdk.Duration.seconds(300)
-    // });
-  }
+		const blogLambda = new lambda.Function(this, `BlogLambdaHandler`, {
+			runtime: lambda.Runtime.NODEJS_14_X,
+			code: lambda.Code.fromAsset("lambda"),
+			handler: "index.handler"
+		});
+
+		new apigw.LambdaRestApi(this, `BlogEndpoint`, {
+			handler: blogLambda
+		});
+	}
 }
