@@ -18,11 +18,10 @@ export class MyPipelineStack extends cdk.Stack {
 
 			synth: new CodeBuildStep("SynthStep", {
 				input: CodePipelineSource.connection(
-					"binums/cdk-pipelines-blog",
+					"<Repo owner>/<Repo name>",
 					"main",
 					{
-						connectionArn:
-							"arn:aws:codestar-connections:ap-south-1:541084636585:connection/1a1c6c84-f01d-4b8c-bd88-2aba210d2d0a"
+						connectionArn: "ARN OF THE CODESTAR CONNECTION MADE EARLIER"
 					}
 				),
 				installCommands: ["npm install -g aws-cdk"],
